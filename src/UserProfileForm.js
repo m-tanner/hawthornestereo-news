@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const UserProfileForm = () => {
     const {id} = useParams();
@@ -96,7 +98,6 @@ const UserProfileForm = () => {
         });
     };
 
-
     const triggerNotificationsApi = async (id) => {
         if (id === '') {
             throw new Error('id cannot be empty when triggering notifications');
@@ -191,6 +192,8 @@ const UserProfileForm = () => {
                         name="preferred_name"
                         value={formData.preferred_name}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Enter your preferred name. This will how we will address you in communications."
                         required
                     />
                 </div>
@@ -202,6 +205,8 @@ const UserProfileForm = () => {
                         name="email_address"
                         value={formData.email_address}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Provide your valid email address for account notifications."
                         required
                         readOnly={true}
                     />
@@ -215,6 +220,8 @@ const UserProfileForm = () => {
                         placeholder="e.g. Luxman,SX-850,chrome bumper,equalizer"
                         value={Array.isArray(formData.favorite_keywords) ? formData.favorite_keywords.join(',') : ''}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="List any keywords separated by commas."
                     />
                 </div>
                 <div className="form-group checkbox-group">
@@ -225,6 +232,8 @@ const UserProfileForm = () => {
                         name="favorites_only"
                         checked={formData.favorites_only}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Use this checkbox to only receive notification about products that are match your Wish List keywords."
                     />
                 </div>
                 <div className="form-group checkbox-group">
@@ -235,9 +244,12 @@ const UserProfileForm = () => {
                         name="unsubscribed"
                         checked={formData.unsubscribed}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Use this checkbox to opt out of all communications."
                     />
                 </div>
                 <button type="submit">Save</button>
+                <Tooltip id="tooltip" place="top" type="dark" effect="solid" style={{ zIndex: 1000 }}/>
             </form>
             {/* Conditionally render the "Trigger Notifications" button */}
             {(typeof formData.email_address === 'string' &&

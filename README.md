@@ -44,7 +44,7 @@ make install
 You can run the app locally for development using the following command:
 
 ```bash
-make run
+make run GCP_PROJECT=hawthorne-nofifications
 ```
 
 This will start the development server, and you can view the app by navigating to `http://localhost:3000` in your web
