@@ -17,30 +17,37 @@
   "author": "Michael Tanner",
   "license": "Apache-2.0",
   "dependencies": {
-    "compression": "^1.7.4",
+    "compression": "^1.8.0",
     "cors": "^2.8.5",
-    "express": "^5.0.0",
-    "express-rate-limit": "^7.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
     "helmet": "^7.1.0",
     "node-fetch": "^3.3.2",
-    "pino": "^9.3.2",
-    "pino-http": "^10.0.0",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "^5.0.1",
-    "react-tooltip": "^5.28.0"
+    "react-tooltip": "^5.28.0",
+    "@rollup/plugin-terser": "^0.4.4"
   },
   "peerDependencies": {
     "micromatch": "^4.0.8",
     "nth-check": "^2.1.1",
     "postcss": "^8.4.41",
-    "svgo": "^3.3.2"
+    "svgo": "^2.8.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-methods": "^7.21.11",
+    "@babel/plugin-transform-numeric-separator": "^7.21.11",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.21.11",
+    "@babel/plugin-transform-class-properties": "^7.21.11",
+    "@babel/plugin-transform-optional-chaining": "^7.21.11",
+    "@babel/plugin-transform-private-property-in-object": "^7.21.11",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.35.0"
+    "eslint-plugin-react": "^7.37.4",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "browserslist": {
     "production": [
