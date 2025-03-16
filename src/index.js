@@ -5,6 +5,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import AuthForm from "./AuthForm";
 import UserProfileForm from "./UserProfileForm";
+import CompositionDisplay from "./CompositionDisplay";
 
 // Main Application Component with Routing
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
             <Routes>
                 <Route path="*" element={<AuthForm/>}/>
                 <Route path="/user-profile/:id" element={<UserProfileForm/>}/>
+                <Route path="/c/:id" element={<CompositionDisplay/>}/>
             </Routes>
         </Router>
     );

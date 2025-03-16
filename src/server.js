@@ -133,6 +133,26 @@ app.get('/api/user/:id', async (req, res) => {
     return res.json(data);
 });
 
+// API endpoint to fetch user data
+app.get('/api/c/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const response = await fetch(`${backendURL}/c/${id}`, { agent });
+
+    if (response.status === 404) {
+        return res.status(404).json({ error: 'Composition not found' });
+    }
+    if (!response.ok) {
+        const e = 'Error fetching composition'
+        pino.error(e);
+        return res.status(500).json({ error: e });
+    }
+
+    const data = await response.json();
+    pino.info('Successfully fetched data from external server');
+    return res.json(data);
+});
+
 // API endpoint to trigger notifications
 app.post('/api/trigger', async (req, res) => {
     const { secret } = req.body;
