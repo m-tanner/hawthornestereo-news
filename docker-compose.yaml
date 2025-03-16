@@ -25,6 +25,7 @@ services:
 
   backend:
     image: hawthorne-notifications-backend:latest
+    pull_policy: never
     restart: unless-stopped
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/run/secrets/GOOGLE_APPLICATION_CREDENTIALS
