@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 
 const UserProfileForm = () => {
     const {id} = useParams();
@@ -96,7 +97,6 @@ const UserProfileForm = () => {
         });
     };
 
-
     const triggerNotificationsApi = async (id) => {
         if (id === '') {
             throw new Error('id cannot be empty when triggering notifications');
@@ -180,16 +180,19 @@ const UserProfileForm = () => {
 
     return (
         <div className={"user-profile-form-container"}>
-            <h2>Edit your profile</h2>
+            <h2>Hawthorne Stereo Wish List</h2>
+            <h3>Edit your preferences</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="preferred_name">Preferred Name:</label>
+                    <label htmlFor="preferred_name">Your Name:</label>
                     <input
                         type="text"
                         id="preferred_name"
                         name="preferred_name"
                         value={formData.preferred_name}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Enter your preferred name. This will how we will address you in communications."
                         required
                     />
                 </div>
@@ -201,28 +204,35 @@ const UserProfileForm = () => {
                         name="email_address"
                         value={formData.email_address}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Provide your valid email address for account notifications."
                         required
                         readOnly={true}
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="favorite_keywords">Favorite Keywords (comma-separated):</label>
+                    <label htmlFor="favorite_keywords">Your Wish List (comma-separated):</label>
                     <input
                         type="text"
                         id="favorite_keywords"
                         name="favorite_keywords"
+                        placeholder="e.g. Luxman,SX-850,chrome bumper,equalizer"
                         value={Array.isArray(formData.favorite_keywords) ? formData.favorite_keywords.join(',') : ''}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="List any keywords separated by commas."
                     />
                 </div>
                 <div className="form-group checkbox-group">
-                    <label htmlFor="favorites_only">Favorites Only:</label>
+                    <label htmlFor="favorites_only">Only notify about Wish List entries?</label>
                     <input
                         type="checkbox"
                         id="favorites_only"
                         name="favorites_only"
                         checked={formData.favorites_only}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Use this checkbox to only receive notification about products that are match your Wish List keywords."
                     />
                 </div>
                 <div className="form-group checkbox-group">
@@ -233,20 +243,12 @@ const UserProfileForm = () => {
                         name="unsubscribed"
                         checked={formData.unsubscribed}
                         onChange={handleChange}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Use this checkbox to opt out of all communications."
                     />
                 </div>
                 <button type="submit">Save</button>
-                <a href="https://www.buymeacoffee.com/m.tanner" target="_blank" rel="noopener noreferrer"
-                   className="coffee-button">
-                    <img src="/coffee.png" alt="Coffee Icon"/>
-                    Buy Me a Coffee
-                </a>
-                <a href="https://github.com/m-tanner/hawthornestereo-news/issues" target="_blank"
-                   rel="noopener noreferrer"
-                   className="github-button">
-                    <img src="/octocat.png" alt="GitHub Icon"/>
-                    Report a Bug
-                </a>
+                <Tooltip id="tooltip" place="top" type="dark" effect="solid" style={{ zIndex: 1000 }}/>
             </form>
             {/* Conditionally render the "Trigger Notifications" button */}
             {(typeof formData.email_address === 'string' &&

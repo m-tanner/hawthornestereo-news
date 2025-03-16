@@ -17,6 +17,7 @@ BREW_PREFIX := $(shell brew --prefix)
 all: clean install deploy ## Run all tasks (clean, lint, test, build, deploy)
 
 check-env: ## Check environment variables
+	@if [ -z "$(GCP_PROJECT)" ]; then echo "Error: GCP_PROJECT is not set"; exit 1; fi
 	@if [ -z "$(GOOGLE_APPLICATION_CREDENTIALS)" ]; then echo "Error: GOOGLE_APPLICATION_CREDENTIALS is not set"; exit 1; fi
 	@if [ -z "$(GMAIL_PASSWORD)" ]; then echo "Error: GMAIL_PASSWORD is not set"; exit 1; fi
 

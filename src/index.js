@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'react-tooltip/dist/react-tooltip.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import AuthForm from "./AuthForm";
 import UserProfileForm from "./UserProfileForm";
