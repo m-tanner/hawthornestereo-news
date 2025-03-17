@@ -30,7 +30,14 @@ app.use(express.json());
 app.use(compression());
 
 // Set various HTTP headers for security
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            imgSrc: ["'self'", "https://cdn.shoplightspeed.com"],
+        },
+    },
+}));
 
 // Set up Pino for structured logging using pino-http
 app.use(pinoHttp({ logger: pino }));
