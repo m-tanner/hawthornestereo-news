@@ -19,13 +19,47 @@ body, html {
 
 /* Root container styling */
 .root-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     min-height: 100vh;
     padding: 20px; /* Add padding for better appearance on smaller screens */
-    background-color: #002244;
+}
+
+/* Visibility classes for responsive reordering */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+/* Responsive Adjustments */
+@media only screen and (max-width: 600px) {
+    .email-container {
+        width: 100% !important;
+        border-radius: 0;
+    }
+    p, h1 {
+        margin: 12px;
+    }
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+    .stack-column {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .image-cell {
+        padding: 0 !important;
+        padding-top: 10px !important;
+    }
+    .listing-content {
+        padding: 0 12px 12px 12px !important;
+    }
+    .stack-column img {
+        width: 100% !important;
+        height: auto !important;
+    }
 }
 
 /* Form container styling */
