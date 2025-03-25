@@ -1,13 +1,9 @@
-/* public/index.css */
-
-/* Apply a global box-sizing rule */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Remove default margin and padding */
 body, html {
     margin: 0;
     padding: 0;
@@ -17,7 +13,6 @@ body, html {
     color: #333;
 }
 
-/* Root container styling */
 .root-container {
     width: 100%;
     max-width: 600px;
@@ -28,52 +23,10 @@ body, html {
     height: 100%;
     min-height: 100vh;
     padding: 20px; /* Add padding for better appearance on smaller screens */
+    background-color: #f4f4f4;
 }
 
-/* Visibility classes for responsive reordering */
-.desktop-only { display: block; }
-.mobile-only { display: none; }
-/* Responsive Adjustments */
-@media only screen and (max-width: 600px) {
-    .email-container {
-        width: 100% !important;
-        border-radius: 0;
-    }
-    p, h1 {
-        margin: 12px;
-    }
-    .desktop-only { display: none !important; }
-    .mobile-only { display: block !important; }
-    .stack-column {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .image-cell {
-        padding: 0 !important;
-        padding-top: 10px !important;
-    }
-    .listing-content {
-        padding: 0 12px 12px 12px !important;
-    }
-    .stack-column img {
-        width: 100% !important;
-        height: auto !important;
-    }
-}
-
-/* Form container styling */
-.auth-form-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    border: 1px solid #e1e1e1;
-}
-
-.user-profile-form-container {
+.auth-form-container, .user-profile-form-container {
     background: white;
     padding: 20px;
     border-radius: 8px;

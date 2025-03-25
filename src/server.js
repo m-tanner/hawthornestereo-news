@@ -140,7 +140,7 @@ app.get('/api/user/:id', async (req, res) => {
     return res.json(data);
 });
 
-// API endpoint to fetch user data
+// API endpoint to fetch compositions
 app.get('/api/c/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -151,6 +151,24 @@ app.get('/api/c/:id', async (req, res) => {
     }
     if (!response.ok) {
         const e = 'Error fetching composition'
+        pino.error(e);
+        return res.status(500).json({ error: e });
+    }
+
+    const data = await response.json();
+    pino.info('Successfully fetched data from external server');
+    return res.json(data);
+});
+
+// API endpoint to fetch what's fresh
+app.get('/api/fresh', async (req, res) => {
+    const response = await fetch(`${backendURL}/fresh`, { agent });
+
+    if (response.status === 404) {
+        return res.status(404).json({ error: 'Fresh listings not found' });
+    }
+    if (!response.ok) {
+        const e = 'Error fetching fresh listings'
         pino.error(e);
         return res.status(500).json({ error: e });
     }
